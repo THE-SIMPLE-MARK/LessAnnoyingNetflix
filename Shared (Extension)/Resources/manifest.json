@@ -29,6 +29,6 @@
         "default_icon": "images/toolbar-icon.svg"
     },
 
-    "permissions": [ "webRequest", "webRequestBlocking", "tabs", "activeTab" ],
+    "permissions": [ "webRequest", "webRequestBlocking", "tabs" ],
     "host_permissions": [ "*://netflix.com/*", "*://*.netflix.com/*" ]
 }
