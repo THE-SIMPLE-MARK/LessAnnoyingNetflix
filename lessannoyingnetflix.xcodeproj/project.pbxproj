@@ -114,9 +114,6 @@
 				Resources/content.js,
 				Resources/images,
 				Resources/manifest.json,
-				Resources/popup.css,
-				Resources/popup.html,
-				Resources/popup.js,
 				SafariWebExtensionHandler.swift,
 			);
 			target = 4D2236952F8457F50051BAFB /* lessannoyingnetflix Extension (iOS) */;
@@ -129,9 +126,6 @@
 				Resources/content.js,
 				Resources/images,
 				Resources/manifest.json,
-				Resources/popup.css,
-				Resources/popup.html,
-				Resources/popup.js,
 				SafariWebExtensionHandler.swift,
 			);
 			target = 4D22369F2F8457F50051BAFB /* lessannoyingnetflix Extension (macOS) */;
