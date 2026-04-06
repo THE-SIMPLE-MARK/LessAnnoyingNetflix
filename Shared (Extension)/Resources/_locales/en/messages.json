@@ -1,10 +1,10 @@
 {
     "extension_name": {
-        "message": "lessannoyingnetflix",
+        "message": "Less Annoying Netflix",
         "description": "The display name for the extension."
     },
     "extension_description": {
-        "message": "This is lessannoyingnetflix. You should tell us what your extension does here.",
+        "message": "Removes all the annoying Netflix popups.",
         "description": "Description of what the extension does."
     }
 }
