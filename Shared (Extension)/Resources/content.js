@@ -59,4 +59,25 @@
     } else {
         document.addEventListener("DOMContentLoaded", startObserving);
     }
+
+    // notify background of URL changes (SPA navigation)
+    let lastUrl = window.location.href;
+    const urlObserver = new MutationObserver(() => {
+        if (window.location.href !== lastUrl) {
+            lastUrl = window.location.href;
+            browser.runtime.sendMessage({
+                type: "urlChanged",
+                url: window.location.href
+            })
+        }
+    });
+
+    urlObserver.observe(document, { subtree: true, childList: true });
+
+    window.addEventListener("popstate", () => {
+        browser.runtime.sendMessage({
+            type: "urlChanged",
+            url: window.location.href
+        })
+    });
 })();

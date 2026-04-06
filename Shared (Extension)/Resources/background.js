@@ -33,14 +33,14 @@ async function removeBlockRule(tabId) {
     }
 }
 
-browser.tabs.onUpdated.addListener(async (tabId, _, tab) => {
-    if (!tab.url?.includes(NETFLIX_DOMAIN) && watchTabs.has(tabId)) {
+async function handleNavigation(tabId, url) {
+    if (!url?.includes(NETFLIX_DOMAIN) && watchTabs.has(tabId)) {
         watchTabs.delete(tabId);
         await removeBlockRule(tabId);
         return;
     }
 
-    const isOnWatchPage = tab.url.includes(WATCH_PATH);
+    const isOnWatchPage = url?.includes(WATCH_PATH);
     const wasOnWatchPage = watchTabs.has(tabId);
 
     if (isOnWatchPage && !wasOnWatchPage) {
@@ -49,6 +49,16 @@ browser.tabs.onUpdated.addListener(async (tabId, _, tab) => {
     } else if (!isOnWatchPage && wasOnWatchPage) {
         watchTabs.delete(tabId);
         await removeBlockRule(tabId);
+    }
+}
+
+browser.tabs.onUpdated.addListener((tabId, _, tab) => {
+    handleNavigation(tabId, tab.url);
+});
+
+browser.runtime.onMessage.addListener((message, sender) => {
+    if (message.type === "urlChanged") {
+        handleNavigation(sender.tab.id, message.url);
     }
 });
 
