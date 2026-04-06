@@ -1,2 +1,2 @@
 # Less Annoying Netflix
-Removes all the annoying Netflix popups in Safari.
+A multiplatform Safari extension (and companion app) which removes all the annoying Netflix popups in Safari.
